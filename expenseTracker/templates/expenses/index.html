@@ -2,10 +2,13 @@
 <h1>Expense list </h1>
 
 {% block content %}
-<ul class="list-group">
+<div class="container">
+{% include 'partials/_messages.html' %}
+<ul class="list-group ">
     <li class="list-group-item">one</li>
     <li class="list-group-item">two</li>
     <li class="list-group-item">three</li>
 
 </ul>
+</div>
 {% endblock content %}
