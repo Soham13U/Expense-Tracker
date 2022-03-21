@@ -9,6 +9,7 @@ import json
 from django.http import JsonResponse
 from userpreferences.models import UserPreference
 import datetime
+from django.core.paginator import Paginator
 
 
 
@@ -19,10 +20,14 @@ from .models import Category
 def index(request):
     categories=Category.objects.all()
     expenses=Expense.objects.filter(owner=request.user)
+    paginator = Paginator(expenses,2)
+    page_number =request.GET.get('page')
+    page_obj = Paginator.get_page(paginator,page_number)
    
 
     context={
-        'expenses':expenses
+        'expenses':expenses,
+        'page_obj':page_obj
          
     }
     return render(request,'expenses/index.html',context)
@@ -43,12 +48,21 @@ def add_expense(request):
         if not amount:
             messages.error(request, 'Amount is required')
             return render(request, 'expenses/add_expense.html', context)
+
+        if not amount.isnumeric():
+            messages.error(request, 'Amount should be a number')
+            return render(request, 'expenses/add_expense.html', context)
+
         description = request.POST['description']
         date = request.POST['expense_date']
         category = request.POST['category']
 
         if not description:
-            messages.error(request, 'description is required')
+            messages.error(request, 'Description is required')
+            return render(request, 'expenses/add_expense.html', context)
+
+        if not date:
+            messages.error(request, 'Date is required')
             return render(request, 'expenses/add_expense.html', context)
 
         Expense.objects.create(owner=request.user, amount=amount, date=date,
@@ -74,12 +88,22 @@ def expense_edit(request, id):
         if not amount:
             messages.error(request, 'Amount is required')
             return render(request, 'expenses/edit-expense.html', context)
+
+        if not amount.isnumeric():
+            messages.error(request, 'Amount should be a number')
+            return render(request, 'expenses/edit-expense.html', context)
+
+        
+
         description = request.POST['description']
         date = request.POST['expense_date']
         category = request.POST['category']
 
         if not description:
             messages.error(request, 'description is required')
+            return render(request, 'expenses/edit-expense.html', context)
+        if not date:
+            messages.error(request, 'Date is required')
             return render(request, 'expenses/edit-expense.html', context)
 
         expense.owner = request.user

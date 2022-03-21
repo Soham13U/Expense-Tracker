@@ -71,7 +71,7 @@ class RegistrationView(View):
        if not User.objects.filter(username=username).exists():
             if not User.objects.filter(email=email).exists():
                 if len(password) < 6:
-                    messages.error(request, 'Password too short')
+                    messages.error(request, 'Password should have atleast 6 characters')
                     return render(request, 'authentication/register.html',context)
 
             user= User.objects.create_user(username=username, email=email)
