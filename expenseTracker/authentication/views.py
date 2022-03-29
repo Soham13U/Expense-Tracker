@@ -79,7 +79,7 @@ class RegistrationView(View):
             user.is_active= False
             user.save()
 
-           # current_site = get_current_site(request)
+            current_site = get_current_site(request)
           
                     
                 
@@ -170,3 +170,14 @@ class LogoutView(View):
         auth.logout(request)
         messages.success(request, 'You have been logged out')
         return redirect('login')
+
+
+class RequestPasswordResetEmail(View):
+    def get(self,request):
+        return render(request,'authentication/reset-password.html')
+
+    def post(self,request):
+        email=User.POST['email']
+        if not validate_email(email):
+            messages.error(request,"Inavlid Email")
+        return render(request,'authentication/reset-password.html')

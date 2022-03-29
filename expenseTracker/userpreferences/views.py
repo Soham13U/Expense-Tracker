@@ -9,15 +9,27 @@ from django.contrib import messages
 
 def index(request):
     currency_data = []
-    file_path = 'expenseTracker\currencies.json'
+    file_path = os.path.join(settings.BASE_DIR, 'expenseTracker\currencies.json')
 
     with open(file_path, 'r') as json_file:
         data = json.load(json_file)
         for k, v in data.items():
             currency_data.append({'name': k, 'value': v})
 
+   
     exists = UserPreference.objects.filter(user=request.user).exists()
     user_preferences = None
+    
+    # if exists:
+    #         currency = UserPreference.objects.get(user = request.user).currency
+    # else:
+    #         currency = 'INR - Indian Rupee'
+    # try:
+    #         currency = UserPreference.objects.get(user = request.user).currency
+    # except UserPreference.DoesNotExist:
+    #         currency = 'INR - Indian Rupee'
+
+
     if exists:
         user_preferences = UserPreference.objects.get(user=request.user)
     if request.method == 'GET':
