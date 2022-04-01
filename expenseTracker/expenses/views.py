@@ -170,4 +170,4 @@ def expense_category_summary(request):
 
 
 def stats_view(request):
-    return render(request, 'expenses/stats.html')
+    return render(request, 'expenses/statsExpense.html')
