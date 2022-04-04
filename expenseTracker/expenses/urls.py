@@ -11,5 +11,8 @@ urlpatterns = [
     path('expense-delete/<int:id>',views.delete_expense,name="expense-delete"),
     path('search-expenses',csrf_exempt(views.search_expenses),name="search_expenses"),
     path('expense_category_summary',views.expense_category_summary,name="expense_category_summary"),
-    path('statsE',views.stats_view,name="statsE")
+    path('statsE',views.stats_view,name="statsE"),
+    path('export_csv',views.export_csv,name="export_csv_e"),
+    path('export_excel',views.export_excel,name="export_excel_e"),
+    #path('export_pdf',views.export_pdf,name="export_pdf_e")
 ]
