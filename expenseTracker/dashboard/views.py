@@ -59,6 +59,13 @@ def index(request):
     final={
        'val':[spent_year,earned_year]
    }
+    exists = UserPreference.objects.filter(user=request.user).exists()
+   
+    if exists:
+            currency = UserPreference.objects.get(user = request.user).currency
+            
+    else:
+            currency = 'INR - Indian Rupee'
 
 
     return render(request, 'dashboard/index.html',{ 'expenses':expenses_today_display[:5],
@@ -81,7 +88,8 @@ def index(request):
         'earned_year_count':earned_year_count,
         'earned_week':earned_week['amount__sum'],
         'earned_week_count':earned_week_count,
-        'val':[spent_year,earned_year]})
+        'val':[spent_year,earned_year],
+        'currency':currency})
 
 
 # @login_required(login_url='/authentication/login')

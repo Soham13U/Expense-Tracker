@@ -3,7 +3,7 @@ from unittest import result
 from urllib import response
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Category, Expense
+from .models import Category, Expense,Budget
 # Create your views here.
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -240,3 +240,12 @@ def export_excel(request):
 #         response.write(output.read())
 
 #     return response
+
+def bdata(request):
+   if request.method =='POST':
+       budget = request.POST.get('budget',False)
+       add_b = Budget(user=request.user,budget=budget)
+       add_b.save()
+       messages.success(request, 'Budget updated')
+       return render(request, 'expenses/index.html',{'budget':budget})
+      # return redirect('expenses',{'budget':budget})

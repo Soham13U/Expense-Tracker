@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 import os
 import json
 from django.conf import settings
@@ -10,6 +10,10 @@ from django.contrib import messages
 def index(request):
     currency_data = []
     file_path = os.path.join(settings.BASE_DIR, 'expenseTracker\currencies.json')
+   
+    
+
+   
 
     with open(file_path, 'r') as json_file:
         data = json.load(json_file)
@@ -38,7 +42,7 @@ def index(request):
                                                           'user_preferences': user_preferences})
     else:
 
-        currency = request.POST['currency']
+        currency = request.POST.get('currency')
         if exists:
             user_preferences.currency = currency
             user_preferences.save()
@@ -46,3 +50,5 @@ def index(request):
             UserPreference.objects.create(user=request.user, currency=currency)
         messages.success(request, 'Changes saved')
         return render(request, 'preferences/index.html', {'currencies': currency_data, 'user_preferences': user_preferences})
+
+

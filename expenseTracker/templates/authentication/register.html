@@ -9,7 +9,7 @@
           
             <div class="card-body">
                   <div class="card-title py-3">
-                <h4>Register for a free account </h4>
+                <h3>Register  </h3>
             </div>
             <form action="{% url 'register' %}" method="post">
                   {% csrf_token %}
@@ -30,7 +30,7 @@
                       </div>
                       <div class="form-group">
                         <input type="password" placeholder="Password" name="password" id="passwordField" class="form-control form-control-sm mb-3"/>
-                        <small class="float-right py-7 mb-3 showPasswordToggle"> SHOW </small>
+                        <small class="float-right py-7 mb-3 showPasswordToggle text-danger"> SHOW </small>
                       </div>
                       
                    
@@ -41,8 +41,8 @@
                     <input type="submit" value="Register" class="btn btn-block btn-primary submit-btn mt-3"/>
                 </form>
                 <div class="container">
-                  <span class="text-lead lead">Already have an account? </span><a href="{% url 'login' %}">Login</a><br>
-                <span class="text-lead lead">Forgot Password </span><a href="{% url 'request_password' %}">Reset</a>
+                  <span class="text-muted mr-2 ">Already have an account? </span><a class="text-info" href="{% url 'login' %}">Login</a><br>
+                <span class="text-muted mr-2 ">Forgot Password </span><a class="text-info" href="{% url 'request_password' %}">Reset</a>
           
                 </div>
             </div>

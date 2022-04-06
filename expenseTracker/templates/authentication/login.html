@@ -12,7 +12,7 @@
 
       <div class="card-body">
         <div class="card-title py-3">
-          <h4>Login to your  account</h4>
+          <h3>Login </h3>
         </div>
         <form action="{% url 'login' %}" method="post">
           {% csrf_token %}
@@ -22,7 +22,7 @@
             <input
               type="text"
               name="username"
-              placeholder="username"
+              placeholder="Username"
               id="usernameField"
               value="{{fieldValues.username}}"
               class="form-control form-control-sm"
@@ -40,8 +40,8 @@
           <input type="submit" value="Login" class="btn btn-block btn-primary submit-btn" />
         </form>
 <div class="container">
-        <span class="text-lead lead">Don't have an account? </span><a href="{% url 'register' %}">Register</a><br>
-      <span class="text-lead lead">Forgot Password </span><a href="{% url 'request_password' %}">Reset</a>
+        <span class="text-muted mr-2">Don't have an account? </span><a class="text-info" href="{% url 'register' %}">Register</a><br>
+      <span class="text-muted mr-2 ">Forgot Password </span><a class="text-info" href="{% url 'request_password' %}">Reset</a>
 
       </div>
       

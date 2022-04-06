@@ -27,3 +27,15 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Budget(models.Model):
+    # user = models.OneToOneField(to = User, on_delete=models.CASCADE) #one to one as each user should have one set of preferences
+    user = models.OneToOneField(to = User, on_delete=models.CASCADE)
+    budget = models.DecimalField(max_digits=8, decimal_places=2,default='0')
+
+    class Meta:
+        verbose_name_plural = 'Budget'
+
+    def __str__(self):
+        return str(self.title)
