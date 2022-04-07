@@ -21,34 +21,43 @@
 
     </div> 
   <div class="row">
-        <div class="col-xl-3 col-md-6"><div class="card card-stats bg-success"><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-muted mb-0">Spent Today</h5><span class="h2 font-weight-bold mb-0">{{ spent_today }}</span></div><div class="col-auto"><div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow"><i class="ni ni-chart-bar-32"></i></div></div></div><p class="mt-3 mb-0 text-sm"><span class="text-nowrap mr-2">No of Expenses: </span><span class="text-danger">{{spent_today_count}}</span></p></div></div></div>
-        <div class="col-xl-3 col-md-6"><div class="card card-stats bg-info"><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-muted mb-0">This Week</h5><span class="h2 font-weight-bold mb-0">{{spent_week}}</span></div><div class="col-auto"><div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow"><i class="ni ni-chart-pie-35"></i></div></div></div><p class="mt-3 mb-0 text-sm"><span class="text-nowrap mr-2">No of Expenses: </span><span class="text-danger">{{spent_week_count}}</span></p></div></div></div>
-        <div class="col-xl-3 col-md-6"><div class="card card-stats bg-primary"><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-muted mb-0">This Month</h5><span class="h2 font-weight-bold mb-0">{{spent_month}}</span></div><div class="col-auto"><div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow"><i class="ni ni-money-coins"></i></div></div></div><p class="mt-3 mb-0 text-sm"><span class="text-nowrap mr-2">No of Expenses: </span><span class="text-danger">{{spent_month_count}}</span></p></div></div></div>
-        <div class="col-xl-3 col-md-6"><div class="card card-stats bg-warning"><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-muted mb-0">This Year</h5><span class="h2 font-weight-bold mb-0">{{spent_year}}</span></div><div class="col-auto"><div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow"><i class="ni ni-chart-bar-32"></i></div></div></div><p class="mt-3 mb-0 text-sm"><span class="text-nowrap mr-2">No of Expenses: </span><span class="text-danger">{{spent_year_count}}</span></p></div></div></div>
+        <div class="col-xl-3 col-md-6"><div class="card card-stats bg-success"><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-muted mb-0  ">Spent Today</h5><div class="mr-1">{{currency}}</div><span class="h2 font-weight-bold mb-0">{{ spent_today }}</span></div><div class="col-auto"><div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow"><i class="ni ni-chart-bar-32"></i></div></div></div><p class="mt-3 mb-0 text-sm"><span class="text-nowrap mr-2">No of Expenses: </span><span class="text-light">{{spent_today_count}}</span></p></div></div></div>
+        <div class="col-xl-3 col-md-6"><div class="card card-stats bg-info"><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-muted mb-0">This Week</h5><div class="mr-1">{{currency}}</div><span class="h2 font-weight-bold mb-0">{{spent_week}}</span></div><div class="col-auto"><div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow"><i class="ni ni-chart-pie-35"></i></div></div></div><p class="mt-3 mb-0 text-sm"><span class="text-nowrap mr-2">No of Expenses: </span><span class="text-light">{{spent_week_count}}</span></p></div></div></div>
+        <div class="col-xl-3 col-md-6"><div class="card card-stats bg-primary"><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-muted mb-0">This Month</h5><div class="mr-1">{{currency}}</div><span class="h2 font-weight-bold mb-0">{{spent_month}}</span></div><div class="col-auto"><div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow"><i class="ni ni-money-coins"></i></div></div></div><p class="mt-3 mb-0 text-sm"><span class="text-nowrap mr-2">No of Expenses: </span><span class="text-light">{{spent_month_count}}</span></p></div></div></div>
+        <div class="col-xl-3 col-md-6"><div class="card card-stats bg-warning"><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-muted mb-0">This Year</h5><div class="mr-1">{{currency}}</div><span class="h2 font-weight-bold mb-0">{{spent_year}}</span></div><div class="col-auto"><div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow"><i class="ni ni-chart-bar-32"></i></div></div></div><p class="mt-3 mb-0 text-sm"><span class="text-nowrap mr-2">No of Expenses: </span><span class="text-light">{{spent_year_count}}</span></p></div></div></div>
       </div><br><br>
       <div class="row">
-        <div class="col-xl-3 col-md-6"><div class="card card-stats bg-success"><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-muted mb-0">Earned Today</h5>{{ currency }}<span class="h2 font-weight-bold mb-0"> {{ earned_today }}</span></div><div class="col-auto"><div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow"><i class="ni ni-chart-bar-32"></i></div></div></div><p class="mt-3 mb-0 text-sm"><span class="text-nowrap mr-2">No of Incomes: </span><span class="text-danger">{{earned_today_count}}</span></p></div></div></div>
-        <div class="col-xl-3 col-md-6"><div class="card card-stats bg-info"><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-secondary mb-0  ">This Week</h5>{{currency}}<span class="h2 font-weight-bold mb-0">{{earned_week}}</span></div><div class="col-auto"><div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow"><i class="ni ni-chart-pie-35"></i></div></div></div><p class="mt-3 mb-0 text-sm"><span class="text-nowrap mr-2">No of Incomes: </span><span class="text-danger">{{earned_week_count}}</span></p></div></div></div>
-        <div class="col-xl-3 col-md-6"><div class="card card-stats bg-primary"><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-muted mb-0 ">This Month </h5><span class="h2 font-weight-bold mb-0">{{earned_month}}</span></div><div class="col-auto"><div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow"><i class="ni ni-money-coins"></i></div></div></div><p class="mt-3 mb-0 text-sm"><span class="text-nowrap mr-2">No of Incomes: </span><span class="text-danger">{{earned_month_count}}</span></p></div></div></div>
-        <div class="col-xl-3 col-md-6"><div class="card card-stats bg-warning"><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-muted mb-0">This Year</h5><span class="h2 font-weight-bold mb-0">{{earned_year}}</span></div><div class="col-auto"><div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow"><i class="ni ni-chart-bar-32"></i></div></div></div><p class="mt-3 mb-0 text-sm"><span class="text-nowrap mr-2">No of Incomes: </span><span class="text-danger">{{earned_year_count}}</span></p></div></div></div>
+        <div class="col-xl-3 col-md-6"><div class="card card-stats bg-success"><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-muted mb-0">Earned Today</h5><div class="mr-1">{{currency}}</div><span class="h2 font-weight-bold mb-0"> {{ earned_today }}</span></div><div class="col-auto"><div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow"><i class="ni ni-chart-bar-32"></i></div></div></div><p class="mt-3 mb-0 text-sm"><span class="text-nowrap mr-2">No of Incomes: </span><span class="text-light">{{earned_today_count}}</span></p></div></div></div>
+        <div class="col-xl-3 col-md-6"><div class="card card-stats bg-info"><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-secondary mb-0  ">This Week</h5><div class="mr-1">{{currency}}</div><span class="h2 font-weight-bold mb-0">{{earned_week}}</span></div><div class="col-auto"><div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow"><i class="ni ni-chart-pie-35"></i></div></div></div><p class="mt-3 mb-0 text-sm"><span class="text-nowrap mr-2">No of Incomes: </span><span class="text-light">{{earned_week_count}}</span></p></div></div></div>
+        <div class="col-xl-3 col-md-6"><div class="card card-stats bg-primary"><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-muted mb-0 ">This Month </h5><div class="mr-1">{{currency}}</div><span class="h2 font-weight-bold mb-0">{{earned_month}}</span></div><div class="col-auto"><div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow"><i class="ni ni-money-coins"></i></div></div></div><p class="mt-3 mb-0 text-sm"><span class="text-nowrap mr-2">No of Incomes: </span><span class="text-light">{{earned_month_count}}</span></p></div></div></div>
+        <div class="col-xl-3 col-md-6"><div class="card card-stats bg-warning"><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-muted mb-0">This Year</h5><div class="mr-1">{{currency}}</div><span class="h2 font-weight-bold mb-0">{{earned_year}}</span></div><div class="col-auto"><div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow"><i class="ni ni-chart-bar-32"></i></div></div></div><p class="mt-3 mb-0 text-sm"><span class="text-nowrap mr-2">No of Incomes: </span><span class="text-light">{{earned_year_count}}</span></p></div></div></div>
       </div>
 
-
+   <div class="col-lg-6 col-5 d-flex justify-content-start"><button id="line" class="btn btn-sm btn-info">Line Graph</button><button id="bar" class="btn btn-sm btn-info">Bar Chart</button></div>
+ 
       <div class="container-fluid mt--6">
-        <div class="col-lg-6 col-5"><button id="line" class="btn btn-sm btn-info">Line Graph</button><button id="bar" class="btn btn-sm btn-info">Bar Chart</button></div>
+     
         <div class="row mt-4">
           <div class="col-xl-6">
             <div class="card bg-default">
               <div class="card-header bg-transparent">
-                <div class="row align-items-center"><div class="col"><h5 class="h3 text-black mb-0 text-center">Total Expense</h5><div class="chart-container" style="position: relative; height:500px; width:450px"><canvas id="myChart1" class="chart-canvas chartjs-render-monitor" width="450" height="500"></canvas></div></div></div>
+                <div class="row align-items-center"><div class="col"><h5 class="h3 text-dark mb-0 text-center">Today</h5><div class="chart-container" style="position: relative; height:500px; width:450px"><canvas id="myChart1" class="chart-canvas chartjs-render-monitor" width="450" height="500"></canvas></div></div></div>
               </div>
             </div>
           </div>
           <div class="col-xl-6">
             <div class="card bg-default">
               <div class="card-header bg-transparent">
-                <div class="row align-items-center">  <div class="col"><h5 class="h3 text-black mb-0 text-center">Total Income</h5><div class="chart-container" style="position: relative; height:500px; width:450px"><canvas id="myChart2" class="chart-canvas chartjs-render-monitor" width="450" height="500"></canvas></div></div></div>
+                <div class="row align-items-center">  <div class="col"><h5 class="h3 text-dark mb-0 text-center">This Week</h5><div class="chart-container" style="position: relative; height:500px; width:450px"><canvas id="myChart2" class="chart-canvas chartjs-render-monitor" width="450" height="500"></canvas></div></div></div>
               </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-4">
+        <div class="col-xl-6">
+          <div class="card bg-default">
+            <div class="card-header bg-transparent">
+              <div class="row align-items-center">  <div class="col"><h5 class="h3 text-dark mb-0 text-center">This Month</h5><div class="chart-container" style="position: relative; height:500px; width:450px"><canvas id="myChart3" class="chart-canvas chartjs-render-monitor" width="450" height="500"></canvas></div></div></div>
             </div>
           </div>
         </div>
@@ -56,11 +65,11 @@
         <div class="col-xl-6">
           <div class="card bg-default">
             <div class="card-header bg-transparent">
-              <div class="row align-items-center">  <div class="col"><h5 class="h3 text-black mb-0 text-center">Total Income</h5><div class="chart-container" style="position: relative; height:500px; width:450px"><canvas id="myChart3" class="chart-canvas chartjs-render-monitor" width="450" height="500"></canvas></div></div></div>
+              <div class="row align-items-center">  <div class="col"><h5 class="h3 text-dark mb-0 text-center">This Year</h5><div class="chart-container" style="position: relative; height:500px; width:450px"><canvas id="myChart4" class="chart-canvas chartjs-render-monitor" width="450" height="500"></canvas></div></div></div>
             </div>
           </div>
         </div>
-
+        </div>
 
 
 
@@ -69,9 +78,9 @@
           <div class="col-md-6">
             <div class="card">
               <div class="card-header border-0"><div class="row align-items-center"><div class="col"><h3 class="mb-0 text-center">Recent Expenses</h3></div></div></div>
-              <div class="table-responsive">
+              <div class="table-responsive table-striped table-hover">
                 <table class="table align-items-center table-flush">
-                  <thead class="thead-light"><tr>{% if expenses %}<th scope="col">Category</th><th scope="col">Amount</th><th scope="col">Created At</th>{% else %}<tr><p class="text-center">NO NEW DATA</p></tr>{% endif %}</tr></thead>
+                  <thead class="thead-dark"><tr>{% if expenses %}<th scope="col">Category</th><th scope="col">Amount <br> ({{currency}})</th><th scope="col">Created At</th>{% else %}<tr><p class="text-center">NO NEW DATA</p></tr>{% endif %}</tr></thead>
                   <tbody>
                     {% if expenses %}
                       {% for expense in expenses %}<tr><th scope="row">{{expense.category}}</th><td><i class="fas fa-arrow-down text-warning mr-3"></i> {{expense.amount}}</td><td>{{ expense.date }}</td></tr>{% endfor %}
@@ -84,9 +93,9 @@
           <div class="col-md-6">
             <div class="card">
               <div class="card-header border-0"><div class="row align-items-center"><div class="col"><h3 class="mb-0 text-center">Recent Incomes</h3></div></div></div>
-              <div class="table-responsive">
+              <div class="table-responsive table-striped table-hover">
                 <table class="table align-items-center table-flush">
-                  <thead class="thead-light"><tr>{% if incomes %}<th scope="col">Source</th><th scope="col">Amount</th><th scope="col">Created At</th>{% else %}<tr><p class="text-center">NO NEW DATA</p></tr>{% endif %}</tr>
+                  <thead class="thead-dark"><tr>{% if incomes %}<th scope="col">Source</th><th scope="col">Amount <br>({{currency}})</th><th scope="col">Created At</th>{% else %}<tr><p class="text-center">NO NEW DATA</p></tr>{% endif %}</tr>
                   </thead>
                   <tbody>
                     {% if incomes %}
@@ -117,6 +126,15 @@
    <script>
    var valS=" {{spent_month}} ";
    var valE=" {{earned_month}} ";
+
+   var valSY="{{spent_year}}";
+   var valEY="{{earned_year}}";
+
+   var valSW="{{spent_week}}";
+   var valEW="{{earned_week}}";
+
+   var valSD="{{spent_today}}";
+   var valED="{{earned_today}}";
   
   </script> 
   <script src="{% static 'js/dashboard.js' %}"></script>

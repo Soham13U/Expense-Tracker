@@ -15,7 +15,7 @@
 
 
 
-const renderChart = (data, labels) => {
+const renderChart = () => {
   const line=document.getElementById("line");
 const bar=document.getElementById("bar");
 
@@ -26,27 +26,29 @@ bar.addEventListener('click',changebar);
   var myChart1 = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: labels,
+      labels:  ['Expense','Income'],
       datasets: [
         {
           label: "Total expenses",
-          data: data,
+          data: [valSD,valED],
           backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(255, 206, 86, 0.2)",
-            "rgba(75, 192, 192, 0.2)",
-            "rgba(153, 102, 255, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
+            "rgba(95,181,99, 0.2)",
+           
+            "rgba(95,181,99, 0.2)",
+            // "rgba(255, 206, 86, 0.2)",
+            // "rgba(75, 192, 192, 0.2)",
+            // "rgba(153, 102, 255, 0.2)",
+            // "rgba(255, 159, 64, 0.2)",
           ],
           borderColor: [
-            "rgba(255, 99, 132, 1)",
-            "rgba(54, 162, 235, 1)",
-            "rgba(255, 206, 86, 1)",
-            "rgba(75, 192, 192, 1)",
-            "rgba(153, 102, 255, 1)",
-            "rgba(255, 159, 64, 1)",
+            "rgba(95,181,99, 1)",
+            "rgba(95,181,99, 1)",
+            // "rgba(255, 206, 86, 1)",
+            // "rgba(75, 192, 192, 1)",
+            // "rgba(153, 102, 255, 1)",
+            // "rgba(255, 159, 64, 1)",
           ],
+         //95,181,99
           borderWidth: 1,
           
         },
@@ -55,7 +57,7 @@ bar.addEventListener('click',changebar);
     options: {
       title: {
         display: true,
-        text: "Expenses per category",
+        text: "Expense and Income",
       },
      },
   });
@@ -71,28 +73,28 @@ bar.addEventListener('click',changebar);
   };
 };
 
-const getChartData = () => {
-  console.log("fetching");
-  fetch("/expense_category_summary")
-    .then((res) => res.json())
-    .then((results) => {
-      console.log("results", results);
-      const category_data = results.expense_category_data;
-      const [labels, data] = [
-        Object.keys(category_data),
-        Object.values(category_data),
-      ];
+// const getChartData = () => {
+//   console.log("fetching");
+//   fetch("/expense_category_summary")
+//     .then((res) => res.json())
+//     .then((results) => {
+//       console.log("results", results);
+//       const category_data = results.expense_category_data;
+//       const [labels, data] = [
+//         Object.keys(category_data),
+//         Object.values(category_data),
+//       ];
 
-      renderChart(data, labels);
-    });
+      
+//     });
 
    
-};
+// };
+renderChart();
+// document.onload = getChartData();       
 
-document.onload = getChartData();       
 
-
-const renderChart2 = (data, labels) => {
+const renderChart2 = () => {
   const line=document.getElementById("line");
   const bar=document.getElementById("bar");
   
@@ -102,22 +104,22 @@ const renderChart2 = (data, labels) => {
   var myChart2 = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: labels,
+      labels: ['Expense','Income'],
       datasets: [
         {
           label: "Total income",
-          data: data,
+          data: [valSW,valEW],
           backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
+            "rgba(30,192,213, 0.2)",
+            "rgba(30,192,213, 0.2)",
             "rgba(255, 206, 86, 0.2)",
             "rgba(75, 192, 192, 0.2)",
             "rgba(153, 102, 255, 0.2)",
             "rgba(255, 159, 64, 0.2)",
-          ],
+          ],//30,192,213
           borderColor: [
-            "rgba(255, 99, 132, 1)",
-            "rgba(54, 162, 235, 1)",
+            "rgba(30,192,213, 1)",
+            "rgba(30,192,213, 1)",
             "rgba(255, 206, 86, 1)",
             "rgba(75, 192, 192, 1)",
             "rgba(153, 102, 255, 1)",
@@ -130,7 +132,7 @@ const renderChart2 = (data, labels) => {
     options: {
       title: {
         display: true,
-        text: "Income per category",
+        text: "Expense and Income",
       },
     },
   });
@@ -146,23 +148,23 @@ const renderChart2 = (data, labels) => {
   };
 };
 
-const getChartData2 = () => {
-  console.log("fetching");
-  fetch('/income/income_source_summary')
-    .then((res) => res.json())
-    .then((results) => {
-      console.log("results", results);
-      const source_data = results.income_source_data;
-      const [labels, data] = [
-        Object.keys(source_data),
-        Object.values(source_data),
-      ];
+// const getChartData2 = () => {
+//   console.log("fetching");
+//   fetch('/income/income_source_summary')
+//     .then((res) => res.json())
+//     .then((results) => {
+//       console.log("results", results);
+//       const source_data = results.income_source_data;
+//       const [labels, data] = [
+//         Object.keys(source_data),
+//         Object.values(source_data),
+//       ];
 
-      renderChart2(data, labels);
-    });
-};
-
-document.onload = getChartData2();       
+      
+//     });
+// };
+renderChart2();
+// document.onload = getChartData2();       
 
 
 
@@ -183,16 +185,16 @@ const renderChart3 = () => {
           // label: "Total income",
           data: [valS,valE],
           backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
+            "rgba(166,65,185, 0.2)",
+            "rgba(166,65,185, 0.2)",
             "rgba(255, 206, 86, 0.2)",
             "rgba(75, 192, 192, 0.2)",
             "rgba(153, 102, 255, 0.2)",
             "rgba(255, 159, 64, 0.2)",
-          ],
+          ],//166,65,185
           borderColor: [
-            "rgba(255, 99, 132, 1)",
-            "rgba(54, 162, 235, 1)",
+            "rgba(166,65,185, 1)",
+            "rgba(166,65,185, 1)",
             "rgba(255, 206, 86, 1)",
             "rgba(75, 192, 192, 1)",
             "rgba(153, 102, 255, 1)",
@@ -205,20 +207,20 @@ const renderChart3 = () => {
     options: {
       title: {
         display: true,
-        text: "Income per category",
+        text: "Expense and Income",
       },
-      scales:{
-        yAxes: [{
-          ticks: {
-            reverse: false,
-            min:0,
-            max:100000,
+      // scales:{
+      //   yAxes: [{
+      //     ticks: {
+      //       reverse: false,
+      //       min:0,
+      //       max:100000,
 
-            stepSize: 5000
-          },
-        }]
+      //       stepSize: 5000
+      //     },
+      //   }]
 
-      },
+      // },
     },
   });
   function changeline(){
@@ -250,6 +252,91 @@ const renderChart3 = () => {
 // };
 renderChart3();
 // document.onload = getChartData3();       
+
+
+const renderChart4 = () => {
+  const line=document.getElementById("line");
+  const bar=document.getElementById("bar");
+  
+  line.addEventListener('click',changeline);
+  bar.addEventListener('click',changebar);
+  var ctx = document.getElementById("myChart4").getContext("2d");
+  var myChart4 = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Expense','Income'],
+      datasets: [
+        {
+          // label: "Total income",
+          data: [valSY,valEY],
+          backgroundColor: [
+            "rgba(254,160,28, 0.2)",
+            "rgba(254,160,28, 0.2)",
+            "rgba(255, 206, 86, 0.2)",
+            "rgba(75, 192, 192, 0.2)",
+            "rgba(153, 102, 255, 0.2)",
+            "rgba(255, 159, 64, 0.2)",
+          ],//254,160,28
+          borderColor: [
+            "rgba(254,160,28, 1)",
+            "rgba(254,160,28, 1)",
+            "rgba(255, 206, 86, 1)",
+            "rgba(75, 192, 192, 1)",
+            "rgba(153, 102, 255, 1)",
+            "rgba(255, 159, 64, 1)",
+          ],
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      title: {
+        display: true,
+        text: "Expense and Income",
+      },
+      // scales:{
+      //   yAxes: [{
+      //     ticks: {
+      //       reverse: false,
+      //       min:0,
+      //       max:100000,
+
+      //       stepSize: 5000
+      //     },
+      //   }]
+
+      // },
+    },
+  });
+  function changeline(){
+      // console.log(myChart2.config.type);
+      myChart4.config.type='line';
+      myChart4.update();
+  };
+  function changebar(){
+      // console.log(myChart2.config.type);
+      myChart4.config.type='bar';
+      myChart4.update();
+  };
+};
+
+// const getChartData3 = () => {
+//   console.log("fetching");
+//   fetch('/income/income_source_summary')
+//     .then((res) => res.json())
+//     .then((results) => {
+//       console.log("results", results);
+//       const source_data = results.income_source_data;
+//       const [labels, data] = [
+//         Object.keys(source_data),
+//         Object.values(source_data),
+//       ];
+
+//       renderChart3(data, labels);
+//     });
+// };
+renderChart4();
+// document.onload = getChartData3();
 
 
 
