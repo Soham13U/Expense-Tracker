@@ -80,7 +80,7 @@ def add_income(request):
 
         UserIncome.objects.create(owner=request.user, amount=amount, date=date,
                                   source=source, description=description)
-        messages.success(request, 'Record saved successfully')
+        messages.success(request, 'Income added successfully')
 
         return redirect('income')
 
@@ -103,7 +103,7 @@ def income_edit(request, id):
             messages.error(request, 'Amount is required')
             return render(request, 'income/edit_income.html', context)
 
-        if not amount.isnumeric():
+        if not amount.replace('.','',1).isdigit():
             messages.error(request, 'Amount should be a number')
             return render(request, 'income/edit_income.html', context)
 
@@ -124,7 +124,7 @@ def income_edit(request, id):
         income.description = description
 
         income.save()
-        messages.success(request, 'Record updated  successfully')
+        messages.success(request, 'Income updated successfully')
 
         return redirect('income')
 
@@ -132,7 +132,7 @@ def income_edit(request, id):
 def delete_income(request, id):
     income = UserIncome.objects.get(pk=id)
     income.delete()
-    messages.success(request, 'Record removed')
+    messages.success(request, 'Income removed')
     return redirect('income')
 
 def income_source_summary(request):

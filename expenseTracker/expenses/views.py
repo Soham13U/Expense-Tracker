@@ -99,7 +99,7 @@ def add_expense(request):
 
         Expense.objects.create(owner=request.user, amount=amount, date=date,
                                category=category, description=description)
-        messages.success(request, 'Expense saved successfully')
+        messages.success(request, 'Expense added successfully')
 
         return redirect('expenses')
 
@@ -121,7 +121,7 @@ def expense_edit(request, id):
             messages.error(request, 'Amount is required')
             return render(request, 'expenses/edit-expense.html', context)
 
-        if not amount.isnumeric():
+        if not amount.replace('.','',1).isdigit():
             messages.error(request, 'Amount should be a number')
             return render(request, 'expenses/edit-expense.html', context)
 
@@ -145,7 +145,7 @@ def expense_edit(request, id):
         expense.description = description
 
         expense.save()
-        messages.success(request, 'Expense updated  successfully')
+        messages.success(request, 'Expense updated successfully')
 
         return redirect('expenses')
 

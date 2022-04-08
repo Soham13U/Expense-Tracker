@@ -29,7 +29,7 @@ bar.addEventListener('click',changebar);
       labels:  ['Expense','Income'],
       datasets: [
         {
-          label: "Total expenses",
+          //label: "Amount",
           data: [valSD,valED],
           backgroundColor: [
             "rgba(95,181,99, 0.2)",
@@ -55,9 +55,31 @@ bar.addEventListener('click',changebar);
       ],
     },
     options: {
+      legend: {
+        display: false
+    },
+    tooltips: {
+        callbacks: {
+           label: function(tooltipItem) {
+                  return tooltipItem.yLabel;
+           }
+        }
+    },
       title: {
         display: true,
         text: "Expense and Income",
+      },
+      scales:{
+        yAxes: [{
+          ticks: {
+            reverse: false,
+            min:0,
+            max:50000,
+
+            stepSize: 5000
+          },
+        }]
+
       },
      },
   });
@@ -107,7 +129,7 @@ const renderChart2 = () => {
       labels: ['Expense','Income'],
       datasets: [
         {
-          label: "Total income",
+          label: "Amount",
           data: [valSW,valEW],
           backgroundColor: [
             "rgba(30,192,213, 0.2)",
@@ -130,10 +152,33 @@ const renderChart2 = () => {
       ],
     },
     options: {
+      legend: {
+        display: false
+    },
+    tooltips: {
+        callbacks: {
+           label: function(tooltipItem) {
+                  return tooltipItem.yLabel;
+           }
+        }
+    },
       title: {
         display: true,
         text: "Expense and Income",
       },
+      scales:{
+        yAxes: [{
+          ticks: {
+            reverse: false,
+            min:0,
+            max:50000,
+
+            stepSize: 5000
+          },
+        }]
+
+      },
+    
     },
   });
   function changeline(){
@@ -182,7 +227,7 @@ const renderChart3 = () => {
       labels: ['Expense','Income'],
       datasets: [
         {
-          // label: "Total income",
+          label: "Amount",
           data: [valS,valE],
           backgroundColor: [
             "rgba(166,65,185, 0.2)",
@@ -205,26 +250,40 @@ const renderChart3 = () => {
       ],
     },
     options: {
+      legend: {
+        display: false
+    },
+    tooltips: {
+        callbacks: {
+           label: function(tooltipItem) {
+                  return tooltipItem.yLabel;
+           }
+        }
+    },
       title: {
         display: true,
         text: "Expense and Income",
       },
-      // scales:{
-      //   yAxes: [{
-      //     ticks: {
-      //       reverse: false,
-      //       min:0,
-      //       max:100000,
+      scales:{
+        yAxes: [{
+          ticks: {
+            reverse: false,
+            min:0,
+            max:100000,
 
-      //       stepSize: 5000
-      //     },
-      //   }]
+            stepSize: 5000
+          },
+        }]
 
-      // },
+      },
+         
     },
   });
+  
+ 
   function changeline(){
       // console.log(myChart2.config.type);
+      
       myChart3.config.type='line';
       myChart3.update();
   };
@@ -267,7 +326,7 @@ const renderChart4 = () => {
       labels: ['Expense','Income'],
       datasets: [
         {
-          // label: "Total income",
+          label: "Amount",
           data: [valSY,valEY],
           backgroundColor: [
             "rgba(254,160,28, 0.2)",
@@ -290,22 +349,34 @@ const renderChart4 = () => {
       ],
     },
     options: {
+      legend: {
+        display: false
+    },
+    tooltips: {
+        callbacks: {
+           label: function(tooltipItem) {
+                  return tooltipItem.yLabel;
+           }
+        }
+    },
+    
+
       title: {
         display: true,
         text: "Expense and Income",
       },
-      // scales:{
-      //   yAxes: [{
-      //     ticks: {
-      //       reverse: false,
-      //       min:0,
-      //       max:100000,
+      scales:{
+        yAxes: [{
+          ticks: {
+            reverse: false,
+            min:0,
+            max:100000,
 
-      //       stepSize: 5000
-      //     },
-      //   }]
+            stepSize: 5000
+          },
+        }]
 
-      // },
+      },
     },
   });
   function changeline(){
