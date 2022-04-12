@@ -100,7 +100,7 @@ class RegistrationView(View):
 
             activate_url = 'http://'+domain+link   
             
-            email_body =  'Hi' +user.username + 'Please the link below to activate your account \n'+activate_url
+            email_body =  'Hi ' +user.username + ' Please the link below to activate your account \n'+activate_url
                     # 'user': user,
                     # 'domain': current_site.domain,
                     # 'uid': urlsafe_base64_encode(force_bytes(user.pk)),

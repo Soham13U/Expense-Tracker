@@ -16,5 +16,5 @@ urlpatterns = [
     path('export_excel',views.export_excel,name="export_excel_e"),
     path('addb',views.bdata,name="addb"),
 
-    #path('export_pdf',views.export_pdf,name="export_pdf_e")
+    path('export_pdf',views.export_pdf,name="export_pdf_e")
 ]

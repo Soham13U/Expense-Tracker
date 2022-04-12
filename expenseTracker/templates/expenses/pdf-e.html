@@ -1,3 +1,9 @@
+
+{% load static %}
+
+
+
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,16 +12,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDF Output</title>
     <style>
-        @page{
-            size:"A4";
-            margin: 2.5cm 1.5cm 3.5cm 1.5cm;
-        }
-        @top-center{
-            content: "COMPANY NAME";
-        }
+     
     </style>
 </head>
 <body>
-    <img src="expenseTracker\expenseTracker\static\images\logo.png">
+    <div class="container mt-4">
+        <div class="row">
+    <img src="expenseTracker/static/images/logo.jpg">
+    
+    <div class="app-table table-responsive">
+
+        <table class="table table-striped table-hover  ">
+          <thead class="thead-dark">
+            <tr>
+              <th >Amount ({{currency}})</th>
+              <th>Category</th>
+              <th>Description</th>
+              <th>Date</th>
+              <th></th>
+            </tr>
+          </thead>
+      
+          <tbody>
+            {% for expense in expenses%}
+            <tr>
+              <td>{{expense.amount}}</td>
+              <td>{{expense.category}}</td>
+              <td>{{expense.description}}</td>
+              <td>{{expense.date}}</td>
+      
+            
+            </tr>
+      
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+</div>
 </body>
 </html>
+{% endblock content %}

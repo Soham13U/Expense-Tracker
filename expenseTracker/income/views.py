@@ -9,6 +9,8 @@ from django.http import JsonResponse,HttpResponse
 import csv
 import xlwt
 import datetime
+from django.template.loader import get_template
+from xhtml2pdf import pisa
 # Create your views here.
 
 
@@ -167,6 +169,7 @@ def stats_view(request):
     return render(request, 'income/statsIncome.html')
 
 def export_csv(request):
+    
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition']='attachment; filename=Income' + str(datetime.datetime.now()) + '.csv'
     writer = csv.writer(response)
@@ -176,6 +179,8 @@ def export_csv(request):
 
     for income in incomes:
         writer.writerow([income.amount,income.description,income.source,income.date])
+
+    
 
     return response
 
@@ -202,4 +207,22 @@ def export_excel(request):
          ws.write(row_num,col_num,str(row[col_num]),font_style)
 
     wb.save(response)
+    return response
+
+def export_pdf(request):
+    template_path='income/pdf-i.html'
+    incomes=UserIncome.objects.filter(owner=request.user)
+    currency = UserPreference.objects.get(user = request.user).currency
+    context={'incomes':incomes,
+    'currency':currency}
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition']='attachment; filename=Income' + str(datetime.datetime.now()) + '.pdf'
+    template=get_template(template_path)
+    html = template.render(context)
+
+    pisa_status = pisa.CreatePDF(html,dest=response)
+    if pisa_status.err:
+        return HttpResponse('Error')
+
+  
     return response

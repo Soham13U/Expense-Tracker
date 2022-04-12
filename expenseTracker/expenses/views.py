@@ -1,3 +1,5 @@
+from curses.ascii import HT
+from re import template
 import tempfile
 from unittest import result
 from urllib import response
@@ -22,6 +24,13 @@ import os
 #from weasyprint import HTML
 import tempfile
 from django.db.models import Sum
+import io
+from django.http import FileResponse
+from reportlab.pdfgen import canvas
+from reportlab.lib.units import inch
+from reportlab.lib.pagesizes import letter
+from django.template.loader import get_template
+from xhtml2pdf import pisa
 
 
 
@@ -222,24 +231,23 @@ def export_excel(request):
     wb.save(response)
     return response
 
-# def export_pdf(request):
-#     response = HttpResponse(content_type='application/pdf')
-#     response['Content-Disposition']='attachment; filename=Expenses' + str(datetime.datetime.now()) + '.pdf'
-#     response['Content-Transfer-Encoding'] = 'binary'
+def export_pdf(request):
+    template_path='expenses/pdf-e.html'
+    expenses=Expense.objects.filter(owner=request.user)
+    currency = UserPreference.objects.get(user = request.user).currency
+    context={'expenses':expenses,
+    'currency':currency}
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition']='attachment; filename=Expenses' + str(datetime.datetime.now()) + '.pdf'
+    template=get_template(template_path)
+    html = template.render(context)
 
-#     html_string = render_to_string('expenses/pdf-output',{'expenses':[],'total':0})
-#     html=HTML(string=html_string)
-#     result = html.write_pdf()
+    pisa_status = pisa.CreatePDF(html,dest=response)
+    if pisa_status.err:
+        return HttpResponse('Error')
 
-
-#     with tempfile.NamedTemporaryFile(delete=True) as output:
-#         output.write(result)
-#         output.flush()
-
-#         output = open(output.name,'rb')
-#         response.write(output.read())
-
-#     return response
+  
+    return response
 
 def bdata(request):
    if request.method =='POST':
