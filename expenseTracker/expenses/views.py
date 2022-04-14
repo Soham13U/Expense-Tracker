@@ -1,4 +1,5 @@
 from curses.ascii import HT
+from pickle import FALSE
 from re import template
 import tempfile
 from unittest import result
@@ -31,6 +32,11 @@ from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import letter
 from django.template.loader import get_template
 from xhtml2pdf import pisa
+import datetime
+from datetime import timedelta
+from django.utils.timezone import localtime
+from django.db.models import Sum
+
 
 
 
@@ -55,20 +61,62 @@ def index(request):
     paginator = Paginator(expenses,5)
     page_number =request.GET.get('page')
     page_obj = Paginator.get_page(paginator,page_number)
-    
+    today_date_time = localtime()
+    today_date = datetime.date.today()
+    # budget=0
+    spent =0
     exists = UserPreference.objects.filter(user=request.user).exists()
+    exists2= Budget.objects.filter(user=request.user).exists()
+    exists3= Expense.objects.filter(owner=request.user).exists()
    
     if exists:
             currency = UserPreference.objects.get(user = request.user).currency
             
     else:
             currency = 'INR - Indian Rupee'
+
+    if exists2:
+        budget= Budget.objects.get(user = request.user).budget
+    else:
+        Budget.objects.create(user=request.user,budget=0)
+
+    
+
+
+    
+
+    budget = request.POST.get('budget',0)
+
+    if  budget:
+        
+        Budget.objects.filter(user=request.user).update(budget=budget)
+        budget = Budget.objects.get(user=request.user).budget
+        messages.success(request, 'Budget updated')
+    else:
+        budget = Budget.objects.get(user=request.user).budget
+    
+   
+    expenses_year = Expense.objects.filter(owner=request.user,date__year=today_date.year)
+    expenses_month = expenses_year.filter(date__month=today_date.month)
+    spent_month = expenses_month.aggregate(Sum('amount'))
+    if not spent_month['amount__sum']:
+        spent_month['amount__sum'] = 0.0
+    
+
+    
+    remaining = float(budget) - float( spent_month['amount__sum'])
+    mdate = datetime.date.today()
+    month = mdate.strftime("%B")
     
 
     context={
         'expenses':expenses,
         'page_obj':page_obj,
-        'currency':currency
+        'currency':currency,
+        'budget':budget,
+        'spent_month':spent_month['amount__sum'],
+        'remaining':remaining,
+        'month':month
          
     }
     return render(request,'expenses/index.html',context)
@@ -250,10 +298,15 @@ def export_pdf(request):
     return response
 
 def bdata(request):
-   if request.method =='POST':
+#    if request.method =='POST':
+   
        budget = request.POST.get('budget',False)
-       add_b = Budget(user=request.user,budget=budget)
-       add_b.save()
+       Budget.objects.filter(user=request.user).update(budget=budget)
+    #    add_b = Budget(user=request.user,budget=budget)
+    #    add_b.budget = budget
+    #    add_b.save()
+       context={'budget':budget}
        messages.success(request, 'Budget updated')
-       return render(request, 'expenses/index.html',{'budget':budget})
-      # return redirect('expenses',{'budget':budget})
+       
+       return render(request,'expenses/index.html',context)
+    #    return redirect('expenses')

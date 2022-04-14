@@ -30,9 +30,9 @@ class Category(models.Model):
 
 
 class Budget(models.Model):
-    # user = models.OneToOneField(to = User, on_delete=models.CASCADE) #one to one as each user should have one set of preferences
-    user = models.OneToOneField(to = User, on_delete=models.CASCADE)
-    budget = models.DecimalField(max_digits=8, decimal_places=2,default='0')
+    user = models.OneToOneField(to = User, on_delete=models.CASCADE) #one to one as each user should have one set of preferences
+    # user = models.ForeignKey(to = User, on_delete=models.CASCADE)
+    budget = models.DecimalField(max_digits=8, decimal_places=2)
 
     class Meta:
         verbose_name_plural = 'Budget'

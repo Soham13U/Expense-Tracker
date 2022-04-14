@@ -98,52 +98,102 @@
       </table>
     </div>
 
-    <div class="container mt-15" style="border: 1px solid #cccccc;">
-      <div class="row">
-          <div class="col-sm-12">
-              <h6 class="text-default mt-15">Report This Month</h6>
+    <!-- <div class="container mt-15" style="border: 1px solid #cccccc; border-radius: 35px;">
+      <div class="row bg-dark text-light">
+          <div class="col-sm-12 ">
+              <h4 class="text-default mt-15  ">Report This Month</h4>
+              <h6 class="text-default mt-15">{{currency}}</h6>
           </div>
+           <hr>
       </div>
-      <hr>
-      <div class="row mb-15">
+      
+     
+      <div class="row mb-15 bg-light">
+        
+        <div class="col-md-4 col-br">
+          <h4 class="text-success text-center">Budget</h4>
+          <h5 class="txt-primary text-center"> {{ budget }}</h5>
+      </div>
           <div class="col-md-2 col-br">
-              <h6 class="text-muted text-center">Total</h6>
-              <h6 class="txt-primary text-center">₹{{ total_expense }}</h6>
+              <h4 class="text-muted text-center">Spent</h4>
+              <h5 class="txt-primary text-center">{{ spent_month }}</h5>
           </div>
+         
           <div class="col-md-4 col-br">
-              <h6 class="text-success text-center">Budget</h6>
-              <h6 class="txt-primary text-center">₹{{ budget }}</h6>
-          </div>
-          <div class="col-md-4 col-br">
-              <h6 class="text-danger text-center">Remaining</h6>
-              <h6 class="txt-primary text-center">₹{{ remaining }}</h6>
+              <h4 class="text-danger text-center">Remaining</h4>
+              <h5 class="txt-primary text-center">{{ remaining }}</h5>
           </div>
       </div>
-  </div>
+  </div> -->
 <br>
+
+
+<div class="modal-content">
+  <div class="modal-header bg-dark text-light">
+      <h5 class="modal-title" id="budgetModalLabel">This Month's Report ( {{currency}} )</h5>
+      
+   </div>
+  
+   
+
+  <div class="modal-body bg-light">
+    <div class="row mb-15 ">
+        
+      <div class="col-md-4 col-br">
+        <h4 class="text-success text-center">Budget</h4>
+        <h5 class="text-primary text-center"> {{ budget }}</h5>
+    </div>
+        <div class="col-md-2 col-br">
+            <h4 class="text-warning text-center">Spent</h4>
+            <h5 class="text-primary text-center">{{ spent_month }}</h5>
+        </div>
+       
+        <div class="col-md-4 col-br">
+            <h4 class="text-danger text-center">Remaining</h4>
+            <h5 class="text-primary text-center">{{ remaining }}</h5>
+        </div>
+    </div>
+
+  </div>
+</div>
+
+<br>
+
+
+
+
+
+
+
+
 
   
       
 <div class="modal-content">
-  <div class="modal-header">
+  <div class="modal-header bg-dark text-light">
       <h5 class="modal-title" id="budgetModalLabel">Budget</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+       
+      
+    
           <!-- <span aria-hidden="true">&times;</span> -->
-      </button>
+      
   </div>
+
   <div class="modal-body">
-      <form action="addb" method="POST">{% csrf_token %}
+      <form action="{% url 'expenses'  %}" method="POST">{% csrf_token %}
           <div class="form-group">
-              <h5>Month: <span class="text-muted">
-                {% comment %} {{ month }} {% endcomment %}
+              <h5>Month: <span class="text-info">
+                {{ month }}
               </span></h5>
+              <h6 class="text-default mt-15 text-success">{{currency}}</h6>
               <label for="budget"></label>
-              <input type="number" class="form-control" step="0.01" id="budget" name='budget' placeholder="Enter Budget">
-              <button type="submit" id="budgetButton" data-budget="{{ budget }}"  class="btn btn-success">Save</button>
+              <input type="number" class="form-control" step="1" id="budget" name='budget'  value="{{ budget }}"  placeholder="Enter Budget">
+              <button type="submit" id="budgetButton" data-budget="{{ budget }}" class="btn btn-success">Save</button>
           </div>
       </form>
   </div>
-
+</div>
+<br>
 
 
 

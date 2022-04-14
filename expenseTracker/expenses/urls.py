@@ -14,7 +14,7 @@ urlpatterns = [
     path('statsE',views.stats_view,name="statsE"),
     path('export_csv',views.export_csv,name="export_csv_e"),
     path('export_excel',views.export_excel,name="export_excel_e"),
-    path('addb',views.bdata,name="addb"),
+    # path('addb',views.bdata,name="addb"),
 
     path('export_pdf',views.export_pdf,name="export_pdf_e")
 ]
