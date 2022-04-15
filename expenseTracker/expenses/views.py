@@ -94,6 +94,7 @@ def index(request):
         messages.success(request, 'Budget updated')
     else:
         budget = Budget.objects.get(user=request.user).budget
+
     
    
     expenses_year = Expense.objects.filter(owner=request.user,date__year=today_date.year)
@@ -101,7 +102,9 @@ def index(request):
     spent_month = expenses_month.aggregate(Sum('amount'))
     if not spent_month['amount__sum']:
         spent_month['amount__sum'] = 0.0
-    
+
+    if   spent_month['amount__sum'] > budget:
+        messages.error(request,'Budget limit exceeded') 
 
     
     remaining = float(budget) - float( spent_month['amount__sum'])

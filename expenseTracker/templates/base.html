@@ -12,7 +12,10 @@
     <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet" />
     <link href="{% static 'css/bootstrap.css'%}" rel="stylesheet">
     <link href="{% static 'css/main.css'%}" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/227711975a.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+<script src="https://unpkg.com/feather-icons"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
 
     <!-- Custom styles for this template -->
     <link href="{% static 'css/dashboard.css' %}" rel="stylesheet" />
@@ -20,10 +23,12 @@
   <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
       {% comment %} <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow"> {% endcomment %}
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Expense Tracker
+      
+      <div class="navbar bg-dark h3 mb-1 pb-0 ml-1 mt-0 " href="#">  
+        Expense Tracker
         {% comment %} navbar-brand col-sm-3 col-md-2 mr-0 {% endcomment %}
-        {% comment %} <img src="static/images/logo.jpg" height= 40px> {% endcomment %}
-      </a>
+        {% comment %} col-sm-3 col-md-2 mr-0 mb-2 {% endcomment %}
+      </div>
       
 
       <ul
@@ -75,7 +80,8 @@
       integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm"
       crossorigin="anonymous"
     ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+    
+    
      <script src="{% static 'js/main.js' %}"></script>
   </body>
 </html>

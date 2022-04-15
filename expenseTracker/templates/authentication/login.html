@@ -3,14 +3,20 @@
 
 
 {% block content %}
-
-<div class="row">
+<style>
+  body {
+   
+    {% comment %} background-image: url('bg1.jpg'); {% endcomment %}
+  }
+  </style>
+<body>
+<div class="row" >
   <div class="col-md-4"></div>
   <div class="col-md-4">
     <div class="card mt-5">
 
 
-      <div class="card-body">
+      <div class="card-body" >
         <div class="card-title py-3">
           <h3>Login </h3>
         </div>
@@ -54,5 +60,5 @@
 </div>
 
 <script src="{% static 'js/register.js' %}"></script>
-
+</body>
 {% endblock content %}

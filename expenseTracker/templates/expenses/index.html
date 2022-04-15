@@ -20,7 +20,7 @@
     </div>
 
     <div class="col-md-2">
-      <a href="{% url 'add-expenses'%}" class="btn btn-info">Add Expense</a>
+      <a href="{% url 'add-expenses'%}" class="btn btn-info"><i class="fa-solid fa-plus"></i>&nbsp; Add Expense</a>
     </div>
   </div>
 
@@ -31,10 +31,10 @@
       <div class="col-md-8">
 
       </div>
-      <div class="col-md-5">
-        <a href="{% url 'export_excel_e' %}" class="btn btn-success">Export Excel </a>
-        <a href="{% url 'export_csv_e' %}" class="btn btn-warning">Export CSV </a>
-        <a href="{% url 'export_pdf_e' %}" class="btn btn-danger">Export PDF </a>
+      <div class="col-md-6">
+        <a href="{% url 'export_excel_e' %}" class="btn btn-success"><i class="fa-solid fa-file-excel"></i>&nbsp; Export Excel </a>
+        <a href="{% url 'export_csv_e' %}" class="btn btn-warning"><i class="fa-solid fa-file-csv"></i>&nbsp; Export CSV </a>
+        <a href="{% url 'export_pdf_e' %}" class="btn btn-danger"><i class="fa-solid fa-file-pdf"></i>&nbsp; Export PDF </a>
 
         <div class="form-group">
           <input type="text" class="form-control" id="searchField" placeholder="Search">
@@ -65,8 +65,7 @@
         <td>
            <a
             href="{% url 'expense-edit' expense.id  %}"
-            class="btn btn-secondary btn-info"
-            >Edit</a
+            class="btn btn-secondary btn-info"       ><i class="fa-solid fa-pen-to-square"></i>&nbsp; Edit</a
           > 
         </td>
       </tr>
@@ -130,7 +129,7 @@
 
 <div class="modal-content">
   <div class="modal-header bg-dark text-light">
-      <h5 class="modal-title" id="budgetModalLabel">This Month's Report ( {{currency}} )</h5>
+      <h5 class="modal-title" id="budgetModalLabel"><i class="fa-solid fa-file-lines"></i>&nbsp; This Month's Report ( {{currency}} )</h5>
       
    </div>
   
@@ -140,16 +139,16 @@
     <div class="row mb-15 ">
         
       <div class="col-md-4 col-br">
-        <h4 class="text-success text-center">Budget</h4>
+        <h4 class="text-success text-center"><i class="fa-solid fa-wallet"></i>&nbsp; Budget</h4>
         <h5 class="text-primary text-center"> {{ budget }}</h5>
     </div>
         <div class="col-md-2 col-br">
-            <h4 class="text-warning text-center">Spent</h4>
+            <h4 class="text-warning text-center"><i class="fa-solid fa-money-check-dollar"></i>&nbsp; Spent</h4>
             <h5 class="text-primary text-center">{{ spent_month }}</h5>
         </div>
        
         <div class="col-md-4 col-br">
-            <h4 class="text-danger text-center">Remaining</h4>
+            <h4 class="text-danger text-center"><i class="fa-solid fa-receipt"></i>&nbsp; Remaining</h4>
             <h5 class="text-primary text-center">{{ remaining }}</h5>
         </div>
     </div>
@@ -171,7 +170,7 @@
       
 <div class="modal-content">
   <div class="modal-header bg-dark text-light">
-      <h5 class="modal-title" id="budgetModalLabel">Budget</h5>
+      <h5 class="modal-title" id="budgetModalLabel"><i class="fa-solid fa-vault"></i>&nbsp; Budget</h5>
        
       
     
@@ -188,7 +187,7 @@
               <h6 class="text-default mt-15 text-success">{{currency}}</h6>
               <label for="budget"></label>
               <input type="number" class="form-control" step="1" id="budget" name='budget'  value="{{ budget }}"  placeholder="Enter Budget">
-              <button type="submit" id="budgetButton" data-budget="{{ budget }}" class="btn btn-success">Save</button>
+              <button type="submit" id="budgetButton" data-budget="{{ budget }}" class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i>&nbsp; Save</button>
           </div>
       </form>
   </div>
@@ -207,11 +206,11 @@
       <ul class="pagination align-right float-right mr-auto">
         {% if page_obj.has_previous %}
         <li {% if page_obj.number == 1 %} class="page-item active btn btn-primary" {% endif %}><a class="page-link btn btn-primary" href="?page=1">&laquo; 1</a></li>
-        <li class="page-item"> <a class="page-link btn btn-primary" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+        <li class="page-item"> <a class="page-link btn btn-primary" href="?page={{ page_obj.previous_page_number }}"><i class="fa-solid fa-caret-left"></i>&nbsp; Previous</a></li>
         {% endif %}
   
         {% if page_obj.has_next %}
-        <li class="page-item"> <a class="page-link btn btn-primary" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+        <li class="page-item"> <a class="page-link btn btn-primary" href="?page={{ page_obj.next_page_number }}">Next &nbsp; <i class="fa-solid fa-caret-right"></i></a></li>
         <li class="page-item"> <a class="page-link btn btn-primary" href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages}} &raquo;</a></li>
         {% endif %}
   

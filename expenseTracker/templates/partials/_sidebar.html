@@ -1,12 +1,13 @@
 {% load static %}
 <nav class="col-md-2 d-none d-md-block bg-light sidebar">
   <div class="sidebar-sticky">
-    <ul class="nav flex-column">
-      <li class="nav-item">
-        <h4
-        class="text-capitalize d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-secondary "
-      >
-        <span>GENERAL</span>
+    
+
+      
+        <h4 class="text-capitalize d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-secondary">
+        <span>
+          <i class="fa-solid fa-money-check"></i>
+          GENERAL</span>
         <a
           class="d-flex align-items-center text-muted"
           href="#"
@@ -15,27 +16,32 @@
           <span data-feather="plus-circle"></span>
         </a>
       </h4>
+      <ul class="nav flex-column">
+      <li class="nav-item"> 
         <a class="  nav-link text-primary " href="{% url 'dashboard' %}">
-          <span data-feather="home"></span>
-          Dashboard 
+          <i class="fa-solid fa-table text-primary mr-0 mt-0" style="font-size:18px;"></i>
+        <div class="mt-2"> Dashboard </div>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link text-primary" href="{% url 'expenses' %}">
-          Expenses
+          <i class="fa-solid fa-money-bills text-primary mr-0 mt-0" style="font-size:18px;"></i>
+          <div class="mt-2">Expenses</div>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link text-primary" href="{% url 'income' %}">
-          Income
+          <i class="fa-solid fa-hand-holding-dollar text-primary mr-0 mt-0" style="font-size:18px;"></i>
+          <div class="mt-2">Income</div>
         </a>
       </li>
     </ul>
 
-    <h4
-      class="text-capitalize d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-secondary"
-    >
-      <span>SUMMARY</span>
+
+    <h4 class="text-capitalize d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-secondary">
+      <span>
+        <i class="fa-solid fa-chart-line"></i>
+        SUMMARY</span>
       <a
         class="d-flex align-items-center text-muted"
         href="#"
@@ -44,16 +50,20 @@
         <span data-feather="plus-circle"></span>
       </a>
     </h4>
+
+
     <ul class="nav flex-column mb-2">
       <li class="nav-item">
         <a class="nav-link text-primary" href="{% url 'statsE' %}">
-          Expenses Summary
+          <i class="fa-solid fa-square-poll-horizontal text-primary mr-0 mt-0" style="font-size:18px;"></i>
+          <div class="mt-2">Expenses Summary</div>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link text-primary" href="{% url 'statsI' %}">
           <span data-feather="file-text"></span>
-          Income Summary
+          <i class="fa-solid fa-square-poll-vertical text-primary mr-0 mt-0" style="font-size:18px;"></i>
+          <div class="mt-2"> Income Summary</div>
         </a>
       </li>
     </ul>
@@ -61,7 +71,8 @@
     <h4
       class=" d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-secondary"
     >
-      <span>SETTINGS</span>
+      <span><i class="fa-solid fa-gear"></i>
+        SETTINGS</span>
       <a
         class="d-flex align-items-center text-muted"
         href="#"
@@ -73,7 +84,8 @@
     <ul class="nav flex-column mb-2">
       <li class="nav-item ">
         <a class="nav-link text-primary" href="{% url 'preferences' %}">
-          Currency
+          <i class="fa-solid fa-solid fa-coins text-primary mr-0 mt-0" style="font-size:18px;"></i>
+          <div class="mt-2"> Currency</div>
         </a>
       </li>
       {% comment %} <li class="nav-item">
