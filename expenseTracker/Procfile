@@ -1,1 +1,1 @@
-web: waitress-serve --port=$PORT expenseTracker.wsgi:application
+web: gunicorn expenseTracker.wsgi --log-file
