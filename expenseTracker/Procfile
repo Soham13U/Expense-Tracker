@@ -1,1 +1,1 @@
-web: gunicorn expenseTracker.wsgi
+web: waitress-serve --port=$PORT expenseTracker.wsgi:application
